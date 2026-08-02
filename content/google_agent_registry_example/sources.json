@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "source_policy": "Only the listed primary Google Cloud documentation pages support documented facts in this example.",
+  "sources": [
+    "https://docs.cloud.google.com/agent-registry/overview",
+    "https://docs.cloud.google.com/agent-registry/data-model",
+    "https://docs.cloud.google.com/agent-registry/register-agents",
+    "https://docs.cloud.google.com/agent-registry/concepts"
+  ]
+}

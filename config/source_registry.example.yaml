@@ -1,0 +1,13 @@
+schema_version: "1.0"
+sources:
+  - id: vendor-official-documentation
+    type: official-documentation
+    discovery_method: configured_public_url
+    credentials_required: false
+  - id: upstream-public-repository
+    type: public-repository
+    discovery_method: configured_https_url
+    credentials_required: false
+policy:
+  store_credentials: never
+  url_reference_means_archived_content: false

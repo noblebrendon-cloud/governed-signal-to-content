@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using this metadata."
+title: "Governed Signal-to-Content: A Local-First Pipeline for Evidence-Based Agent Infrastructure Analysis"
+type: software
+version: 0.1.0
+authors:
+  - family-names: Coleman
+    given-names: Brendon R.
+    affiliation: Clarity Systems Group LLC
+repository-code: "https://github.com/noblebrendon-cloud/governed-signal-to-content"
+license: MIT
+keywords:
+  - governed AI
+  - agent infrastructure
+  - local-first software
+  - evidence lineage
+  - approval gates
+  - persistent state
+  - content governance
+  - deterministic workflows
+  - reusable skills
+  - agent governance
+abstract: >-
+  Governed Signal-to-Content is a local-first reference implementation for
+  monitoring external technical developments, preserving source evidence,
+  evaluating structural relevance, and generating reusable content artifacts
+  inside a deterministic governance workflow. The system separates
+  probabilistic or human-assisted interpretation from authoritative state
+  transitions. Publication remains subject to explicit human approval, while
+  evidence identity, workflow state, and execution receipts remain durable and
+  inspectable.

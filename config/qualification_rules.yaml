@@ -1,0 +1,15 @@
+schema_version: "1.0"
+requirements:
+  primary_source_availability: required
+  substantive_novelty: required
+  structural_overlap: required
+  duplicate_suppression: required_before_qualification
+  separated_analysis_fields:
+    - documented_facts
+    - reasonable_inferences
+    - direct_similarities
+    - broader_industry_trends
+  structural_overlap_dimensions: at_least_one
+authority:
+  proposals_may_be_human_or_probabilistic: true
+  authoritative_transition_owner: deterministic_application_logic

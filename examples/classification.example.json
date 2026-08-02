@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "documented_facts": [
+    "Agent Registry governs standalone skills as top-level Skill resources.",
+    "A Skill can contain multiple immutable SkillRevision resources."
+  ],
+  "reasonable_inferences": [
+    "Treating skills as separately governed resources can make reuse easier to inspect."
+  ],
+  "direct_similarities": [
+    "Both approaches value durable identity, revision history, controlled reuse, and lifecycle governance."
+  ],
+  "broader_industry_trends": [
+    "Agent infrastructure is moving from transient prompts toward managed capability resources."
+  ],
+  "primary_sources": [
+    "https://docs.cloud.google.com/agent-registry/overview",
+    "https://docs.cloud.google.com/agent-registry/data-model",
+    "https://docs.cloud.google.com/agent-registry/register-agents",
+    "https://docs.cloud.google.com/agent-registry/concepts"
+  ],
+  "structural_overlap_dimensions": [
+    "durable operational identity",
+    "revision history",
+    "lifecycle governance"
+  ],
+  "qualification_decision": true,
+  "qualification_reason": "Primary documentation supports substantive novelty and bounded structural overlap."
+}

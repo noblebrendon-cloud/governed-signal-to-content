@@ -1,0 +1,18 @@
+schema_version: "1.0"
+name: governed-agent-infrastructure-watch
+description: Example monitoring scope; no network discovery is enabled by default.
+cadence: weekly
+topics:
+  - governed agent interfaces
+  - machine-readable design systems
+  - command-line interfaces
+  - approval gates
+  - persistent state
+  - local-first workflows
+  - reusable skills
+  - evidence and lineage
+  - multi-brand control surfaces
+output_policy:
+  create_candidates_only: true
+  require_primary_sources: true
+  external_publication: false

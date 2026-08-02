@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/gs2c/content_packet.schema.json",
+  "title": "Content packet receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "packet_id", "candidate_id", "created_at_utc", "required_artifacts", "artifact_hashes", "packet_manifest_hash", "warnings", "approval_status"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "packet_id": {"type": "string", "pattern": "^pkt_[0-9a-f]{32}$"},
+    "candidate_id": {"type": "string", "pattern": "^cand_[0-9a-f]{32}$"},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "required_artifacts": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "01_linkedin_analysis.md"},
+        {"const": "02_csg_facebook_post.md"},
+        {"const": "03_transient_vs_governed.mmd"},
+        {"const": "04_governed_operating_layers_essay.md"},
+        {"const": "05_repository_note.md"}
+      ],
+      "items": false,
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "artifact_hashes": {"type": "object", "minProperties": 6, "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "packet_manifest_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "approval_status": {"const": "AWAITING_APPROVAL"}
+  }
+}

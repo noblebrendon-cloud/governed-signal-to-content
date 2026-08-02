@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/gs2c/evidence_record.schema.json",
+  "title": "Evidence record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_id", "candidate_id", "source_url", "original_filename", "preserved_path", "sha256", "byte_size", "ingested_at_utc", "content_preserved"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "evidence_id": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"},
+    "candidate_id": {"type": "string", "pattern": "^cand_[0-9a-f]{32}$"},
+    "source_url": {"type": "string", "format": "uri"},
+    "original_filename": {"type": ["string", "null"]},
+    "preserved_path": {"type": ["string", "null"]},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "byte_size": {"type": ["integer", "null"], "minimum": 0},
+    "ingested_at_utc": {"type": "string", "format": "date-time"},
+    "content_preserved": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,7 @@
+flowchart LR
+  subgraph T[Transient prompt path]
+    A[prompt] --> B[model response] --> C[copied output] --> D[context loss]
+  end
+  subgraph G[Governed capability path]
+    E[registered capability] --> F[evidence and revision identity] --> H[controlled execution] --> I[approval gate] --> J[reusable authorized output]
+  end

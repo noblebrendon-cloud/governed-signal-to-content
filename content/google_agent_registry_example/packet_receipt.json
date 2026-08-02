@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "packet_id": "pkt_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "candidate_id": "cand_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "created_at_utc": "2026-08-02T12:00:00Z",
+  "required_artifacts": [
+    "01_linkedin_analysis.md",
+    "02_csg_facebook_post.md",
+    "03_transient_vs_governed.mmd",
+    "04_governed_operating_layers_essay.md",
+    "05_repository_note.md"
+  ],
+  "artifact_hashes": {
+    "01_linkedin_analysis.md": "6c854a3ec6e691204d56c4896c41b4ca6df23cd9be89abd8a238a0ac71fc346c",
+    "02_csg_facebook_post.md": "735288350974f8e38d547b9df5d69c68bba728f58809e05bd9b77358727a8d31",
+    "03_transient_vs_governed.mmd": "5ad1adafb58d401f4a40330f88907ee15c8065badc1a1c5e26af5e09b6c04de4",
+    "04_governed_operating_layers_essay.md": "2cb5cdcbbba4222da44f1f441e6ff3f9423eb428be7a35716939e7d43dc6020e",
+    "05_repository_note.md": "5295d2ac5e5d27dd9c00a28dbeb89fbfe3c529a75fd3b09b497f0e7e7ed29cac",
+    "sources.json": "96ebb76caaafefac8ee8fae503af9c4b1ea66f020cf8443e4028c3f4c4391185"
+  },
+  "packet_manifest_hash": "a78aaeaf186c5c3d6caf91b8d5dbeef8ee9520d7c5438e30fd7d2140c244234d",
+  "warnings": [],
+  "approval_status": "AWAITING_APPROVAL"
+}

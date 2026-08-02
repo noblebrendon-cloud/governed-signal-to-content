@@ -1,0 +1,21 @@
+schema_version: "1.0"
+fixed_file_count: 7
+artifacts:
+  - filename: 01_linkedin_analysis.md
+    role: linkedin_analysis
+    target_words: {minimum: 250, maximum: 500}
+  - filename: 02_csg_facebook_post.md
+    role: csg_facebook_post
+    target_words: {minimum: 100, maximum: 200}
+  - filename: 03_transient_vs_governed.mmd
+    role: mermaid_comparison
+  - filename: 04_governed_operating_layers_essay.md
+    role: long_form_essay
+    target_words: {minimum: 800, maximum: 1200}
+  - filename: 05_repository_note.md
+    role: implementation_note
+supporting_files:
+  - sources.json
+  - packet_receipt.json
+length_policy: warn_only
+approval_required: true

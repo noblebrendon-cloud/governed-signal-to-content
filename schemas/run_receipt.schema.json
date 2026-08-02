@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/gs2c/run_receipt.schema.json",
+  "title": "Execution receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "command", "timestamp_utc", "actor", "input_identifiers", "prior_state", "requested_transition", "resulting_state", "outcome", "reason", "file_hashes", "application_version"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string", "format": "uuid"},
+    "command": {"type": "string", "minLength": 1},
+    "timestamp_utc": {"type": "string", "format": "date-time"},
+    "actor": {"type": "string", "minLength": 1},
+    "input_identifiers": {"type": "object"},
+    "prior_state": {"type": ["string", "null"]},
+    "requested_transition": {"type": ["string", "null"]},
+    "resulting_state": {"type": ["string", "null"]},
+    "outcome": {"enum": ["accepted", "rejected", "success", "failure"]},
+    "reason": {"type": "string"},
+    "file_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+    "application_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"}
+  }
+}

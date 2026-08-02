@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+
+# Local runtime workspaces and durable runtime state
+workspace/
+workspaces/
+local-workspace/
+*.sqlite
+*.sqlite3
+*.db
+evidence/
+candidates/
+packets/
+approvals/
+receipts/
+state/
+
+# Credentials and local configuration
+credentials/
+credentials.*
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Packaging output
+build/
+dist/

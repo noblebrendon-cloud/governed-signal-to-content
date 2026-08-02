@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "governed-signal-to-content"
+version = "0.1.0"
+description = "A local-first reference implementation for converting external technical signals into evidence-backed, governed publication candidates."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Brendon R. Coleman" },
+]
+dependencies = [
+  "jsonschema>=4.22,<5",
+  "pydantic>=2.7,<3",
+  "PyYAML>=6,<7",
+  "typer>=0.12,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+]
+
+[project.scripts]
+gs2c = "governed_signal_to_content.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/governed_signal_to_content"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
