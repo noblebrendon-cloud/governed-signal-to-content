@@ -1,16 +1,20 @@
 # Zenodo release process
 
-The initial public repository push is intentionally not a GitHub Release. Complete these steps in order:
+## Verified v0.1.0 outcome
 
-1. Push the public repository.
-2. Sign in to Zenodo.
-3. Connect the GitHub account if necessary.
-4. Open the Zenodo GitHub integration.
-5. Sync repositories.
-6. Enable `governed-signal-to-content`.
-7. Confirm `.zenodo.json` metadata.
-8. Only then create GitHub Release `v0.1.0`.
-9. Wait for Zenodo to process the release.
-10. Add the real DOI and badge in a later commit.
+Zenodo was enabled for `governed-signal-to-content` before GitHub Release `v0.1.0` was created. Zenodo archived that Release successfully and issued the verified **version DOI** [10.5281/zenodo.21762787](https://doi.org/10.5281/zenodo.21762787).
 
-Do not invent a DOI or use a placeholder that resembles one. Do not claim archival status until Zenodo has processed the enabled repository's actual GitHub Release.
+The repository records only that verified version DOI. A Zenodo concept DOI has not been recorded or inferred; add one only if it is separately verified from the public Zenodo record.
+
+## Procedure for future substantive releases
+
+1. Complete a substantive version and its validation gates.
+2. Push the reviewed commit to the public repository.
+3. Confirm that the Zenodo GitHub integration remains connected and the repository remains enabled.
+4. Confirm `.zenodo.json` metadata for the upcoming version without injecting a DOI from a prior version record.
+5. Create one GitHub tag and Release only when the substantive version is ready.
+6. Wait for Zenodo to process that specific Release.
+7. Verify the new version record and its version DOI on the public Zenodo page.
+8. Add only the actually issued DOI and badge in a later documentation commit.
+
+Each future Zenodo release record receives its own version DOI. Do not reuse `10.5281/zenodo.21762787` as another version's DOI, invent a placeholder DOI, or claim archival completion before the new record is publicly verifiable.

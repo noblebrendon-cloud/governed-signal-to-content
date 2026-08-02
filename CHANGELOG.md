@@ -11,3 +11,7 @@ No unreleased changes documented.
 ### Added
 
 - Local-first governed workflow, CLI, SQLite state, evidence identity, packet generation, approval gates, receipts, documentation, schemas, tests, and conservative example content.
+
+### Archived
+
+- GitHub Release `v0.1.0` was archived by Zenodo with verified version DOI [10.5281/zenodo.21762787](https://doi.org/10.5281/zenodo.21762787).

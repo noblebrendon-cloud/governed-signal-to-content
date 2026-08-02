@@ -3,6 +3,8 @@ message: "If you use this software, please cite it using this metadata."
 title: "Governed Signal-to-Content: A Local-First Pipeline for Evidence-Based Agent Infrastructure Analysis"
 type: software
 version: 0.1.0
+doi: 10.5281/zenodo.21762787
+date-released: 2026-08-02
 authors:
   - family-names: Coleman
     given-names: Brendon R.

@@ -1,10 +1,12 @@
 # Governed Signal-to-Content
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21762787.svg)](https://doi.org/10.5281/zenodo.21762787)
+
 > **This repository does not automate publication.**
 >
 > **It automates the governed preparation of evidence-backed publication candidates.**
 
-**Status:** v0.1.0 released through GitHub; Zenodo archival processing and DOI assignment may still be pending.
+**Status:** v0.1.0 released and archived by Zenodo. Verified version DOI: [10.5281/zenodo.21762787](https://doi.org/10.5281/zenodo.21762787).
 
 Governed Signal-to-Content is a local-first Python reference implementation for turning an external technical signal into an inspectable content packet without giving probabilistic output authority over workflow state.
 
@@ -184,15 +186,17 @@ tests/     state, identity, packet, approval, receipt, and schema tests
 - richer development-identifier extraction;
 - configurable qualification policies with the same deterministic authority boundary;
 - optional downstream publisher adapters that still require explicit human authorization;
-- first archival GitHub Release after Zenodo repository activation.
+- future substantive releases after operational validation and metadata review.
 
 ## Citation
 
-Use [CITATION.cff](CITATION.cff) or GitHub's **Cite this repository** interface after the repository is published. Metadata is also prepared in [.zenodo.json](.zenodo.json). No DOI is claimed in this version.
+Use [CITATION.cff](CITATION.cff) or GitHub's **Cite this repository** interface. The archived `v0.1.0` software version has the verified DOI [10.5281/zenodo.21762787](https://doi.org/10.5281/zenodo.21762787).
+
+That identifier is the **version DOI for v0.1.0**. This repository does not record or infer a Zenodo concept DOI; a concept DOI should be added only if it is separately verified.
 
 ## Zenodo release status
 
-The repository is enabled in the Zenodo GitHub integration, and GitHub Release `v0.1.0` is configured to trigger archival. Zenodo processing and DOI assignment may still be pending; no DOI is claimed until Zenodo visibly issues the actual identifier. Follow [the Zenodo release process](docs/zenodo-release-process.md) for post-processing verification.
+Zenodo archived GitHub Release `v0.1.0` and issued the verified version DOI [10.5281/zenodo.21762787](https://doi.org/10.5281/zenodo.21762787). Future releases receive their own version records; no concept DOI is recorded here. See [the Zenodo release process](docs/zenodo-release-process.md).
 
 ## License
 
