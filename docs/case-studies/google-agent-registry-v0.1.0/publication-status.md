@@ -4,12 +4,20 @@
 
 | Artifact | Generated | Human-approved | Locally authorized | External publication evidence | Publication URL |
 |---|---:|---:|---:|---|---|
-| LinkedIn architecture analysis | Yes | Yes | Yes | Manual publication reported; URL evidence not yet captured | `null` |
+| LinkedIn architecture analysis | Yes | Yes | Yes | Public article and distribution post captured | https://www.linkedin.com/pulse/from-prompts-governed-capabilities-brendon-coleman-zen7c/ |
 | Clarity Systems Group Facebook post | Yes | Yes | Yes | None captured; remains a draft | `null` |
 | Mermaid diagram | Yes | Yes | Yes | None captured as a standalone publication | `null` |
 | Long-form/Substack-ready essay | Yes | Yes | Yes | None captured; not claimed as published | `null` |
 | Repository note | Yes | Yes | Yes | Included in this case-study export | [packet/05_repository_note.md](packet/05_repository_note.md) |
 
-The LinkedIn status reflects a reported manual action, not verification by the governed workflow. Until the public URL is recorded, the public publication claim remains unverified in this repository.
+The LinkedIn architecture analysis was published manually after local release authorization.
 
-**MANUAL FOLLOW-UP:** Add the public LinkedIn article URL to `publication-status.md` when available.
+Canonical article URL:
+
+https://www.linkedin.com/pulse/from-prompts-governed-capabilities-brendon-coleman-zen7c/
+
+LinkedIn distribution post:
+
+https://www.linkedin.com/feed/update/urn:li:activity:7489762815382089729/
+
+The governed workflow prepared, approved, and locally authorized the article. External publication to LinkedIn remained a manual action.
