@@ -4,7 +4,7 @@
 >
 > **It automates the governed preparation of evidence-backed publication candidates.**
 
-**Status:** v0.1.0 implementation prepared; first archival release pending Zenodo repository activation.
+**Status:** v0.1.0 released through GitHub; Zenodo archival processing and DOI assignment may still be pending.
 
 Governed Signal-to-Content is a local-first Python reference implementation for turning an external technical signal into an inspectable content packet without giving probabilistic output authority over workflow state.
 
@@ -192,7 +192,7 @@ Use [CITATION.cff](CITATION.cff) or GitHub's **Cite this repository** interface 
 
 ## Zenodo release status
 
-The repository metadata is ready, but the repository must first be enabled manually in the Zenodo GitHub integration. No tag or GitHub Release is part of the initial repository publication. Follow [the Zenodo release process](docs/zenodo-release-process.md) before creating `v0.1.0`.
+The repository is enabled in the Zenodo GitHub integration, and GitHub Release `v0.1.0` is configured to trigger archival. Zenodo processing and DOI assignment may still be pending; no DOI is claimed until Zenodo visibly issues the actual identifier. Follow [the Zenodo release process](docs/zenodo-release-process.md) for post-processing verification.
 
 ## License
 
