@@ -10,6 +10,7 @@ env/
 .env
 .env.*
 !.env.example
+.gs2c.local.json
 .idea/
 .vscode/
 

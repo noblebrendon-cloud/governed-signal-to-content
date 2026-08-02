@@ -1,0 +1,10 @@
+{
+  "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+  "schema_version": "1.0",
+  "sources": [
+    "https://docs.cloud.google.com/agent-registry/overview",
+    "https://docs.cloud.google.com/agent-registry/data-model",
+    "https://docs.cloud.google.com/agent-registry/register-agents",
+    "https://docs.cloud.google.com/agent-registry/concepts"
+  ]
+}

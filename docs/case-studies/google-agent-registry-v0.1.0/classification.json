@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "documented_facts": [
+    "Agent Registry governs standalone skills as top-level Skill resources.",
+    "Standalone skills are distinct from A2A skills, which are declarative metadata blocks represented inline in an agent's Agent Card.",
+    "Standalone skills use Skill, SkillRevision, and Publisher API resources.",
+    "Administrators can apply fine-grained access policies to registered standalone skills.",
+    "SkillRevision resources provide immutable versioned snapshots and version history."
+  ],
+  "reasonable_inferences": [
+    "Durable resource identity and revision history can make reusable capabilities easier to inspect and control than instructions retained only in transient model context.",
+    "Governed Signal-to-Content operates at a different boundary and additionally governs source identity, evidence lineage, duplicate suppression, deterministic workflow state, approval authority, publication authorization, persistent local state, and append-only receipts."
+  ],
+  "direct_similarities": [
+    "Capabilities are treated as managed resources.",
+    "Both designs value durable operational identity.",
+    "Both designs value revision history, controlled reuse, and lifecycle governance."
+  ],
+  "broader_industry_trends": [
+    "Agent infrastructure is moving from transient prompt handling toward managed capabilities with identity, versioning, and explicit governance boundaries."
+  ],
+  "primary_sources": [
+    "https://docs.cloud.google.com/agent-registry/overview",
+    "https://docs.cloud.google.com/agent-registry/data-model",
+    "https://docs.cloud.google.com/agent-registry/register-agents",
+    "https://docs.cloud.google.com/agent-registry/concepts"
+  ],
+  "structural_overlap_dimensions": [
+    "capabilities treated as managed resources",
+    "durable operational identity",
+    "revision history",
+    "controlled reuse",
+    "lifecycle governance"
+  ],
+  "qualification_decision": true,
+  "qualification_reason": "Current primary documentation supports substantive novelty and bounded structural overlap without claiming architectural equivalence."
+}

@@ -136,6 +136,14 @@ The [Google Cloud Agent Registry example](content/google_agent_registry_example/
 
 It does not claim equivalence between Google Cloud Agent Registry and Clarity Systems Group.
 
+## Operational validation
+
+The first real governed run processed the Google Agent Registry standalone-skill governance signal that motivated this project. See the [sanitized operational case study](docs/case-studies/google-agent-registry-v0.1.0/README.md), including its generated packet, receipt index, publication-status boundary, and observed friction.
+
+The bounded next milestone is [v0.2.0 — Operational Watch Loop](docs/roadmap/v0.2.0-operational-watch-loop.md).
+
+**One operational case completed; three-case validation target pending.**
+
 ## Evidence and receipt model
 
 Runtime data belongs in a user-selected workspace:

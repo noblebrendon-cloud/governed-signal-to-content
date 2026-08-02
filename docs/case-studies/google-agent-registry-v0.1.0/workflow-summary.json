@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "case_id": "google-agent-registry-v0.1.0",
+  "sanitized_public_export": true,
+  "canonical_runtime_records_modified_for_export": false,
+  "workspace_initialization": {
+    "workspace_role": "primary_operational_workspace",
+    "newly_initialized": true,
+    "initialization_command": "gs2c init --workspace <configured-local-workspace>",
+    "initialized_at_utc": "2026-08-02T20:15:25.3903729Z",
+    "application_version": "0.1.0",
+    "initial_status": {
+      "candidates": {},
+      "packets": {}
+    },
+    "sqlite_file_exists": true,
+    "receipt_log_exists": true,
+    "workspace_manifest_sha256": "ad24d34a96366b08010769d73691c6d5f63249a2c43b29962833d8111dfd2da5"
+  },
+  "candidate": {
+    "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+    "title": "Google Cloud Agent Registry standalone skill governance",
+    "final_state": "RELEASED"
+  },
+  "evidence": {
+    "evidence_id": "ev_5de73224a1b1421584c3bdf0cf9b1cb3",
+    "source_bytes_preserved": true,
+    "source_sha256": "4be73b25abda8181e10f2ea0497e4bd2acf7c77ef24a009c20613b5a2b295e71",
+    "byte_size": 106166
+  },
+  "packet": {
+    "packet_id": "pkt_64e811082405471ea8369a9bd4c4b430",
+    "final_state": "RELEASED",
+    "packet_manifest_hash": "72d03c60193f9fa72b63f83ab068bd0c393583f3392bcf03a850a3746ee168d0",
+    "file_count": 7,
+    "required_artifact_count": 5,
+    "warnings": [
+      "01_linkedin_analysis.md: 218 words; target range is 250-500.",
+      "04_governed_operating_layers_essay.md: 650 words; target range is 800-1200."
+    ]
+  },
+  "governance": {
+    "qualification_decision": true,
+    "approval_actor": "Brendon R. Coleman",
+    "release_authorization_actor": "Brendon R. Coleman",
+    "external_publication_performed_by_cli": false,
+    "released_meaning": "Locally authorized for downstream publication; not posted online."
+  },
+  "receipts": {
+    "count": 8,
+    "accepted": 8,
+    "rejected": 0,
+    "canonical_receipt_log_sha256": "fcbfd5344e0e80086182382dd899a79adc87f3541e2d1c318df122514ca63478",
+    "canonical_receipts_rewritten": false
+  }
+}

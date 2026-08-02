@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "case_id": "google-agent-registry-v0.1.0",
+  "sanitized_public_export": true,
+  "checked_at_utc": "2026-08-02T20:22:35.0588850Z",
+  "primary_evidence": {
+    "evidence_id": "ev_5de73224a1b1421584c3bdf0cf9b1cb3",
+    "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+    "source_url": "https://docs.cloud.google.com/agent-registry/overview",
+    "resolved_canonical_url": "https://docs.cloud.google.com/agent-registry/overview",
+    "content_preserved": true,
+    "original_filename": "agent-registry-overview.download.html",
+    "byte_size": 106166,
+    "sha256": "4be73b25abda8181e10f2ea0497e4bd2acf7c77ef24a009c20613b5a2b295e71",
+    "ingested_at_utc": "2026-08-02T20:19:51.932735Z"
+  },
+  "supporting_primary_sources": [
+    {
+      "source_url": "https://docs.cloud.google.com/agent-registry/data-model",
+      "resolution_status": "resolved",
+      "content_preserved": false
+    },
+    {
+      "source_url": "https://docs.cloud.google.com/agent-registry/register-agents",
+      "resolution_status": "resolved",
+      "content_preserved": false
+    },
+    {
+      "source_url": "https://docs.cloud.google.com/agent-registry/concepts",
+      "resolution_status": "resolved",
+      "content_preserved": false
+    }
+  ],
+  "preservation_note": "The overview page was byte-preserved through ingest. The other primary pages were verified as resolving and retained as honest URL references; their bytes were not archived by this run.",
+  "path_sanitization": "The canonical local evidence path is intentionally omitted from this public export."
+}

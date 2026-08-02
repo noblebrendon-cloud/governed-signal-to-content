@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "case_id": "google-agent-registry-v0.1.0",
+  "sanitized_public_export": true,
+  "canonical_runtime_log_included": false,
+  "canonical_runtime_log_rewritten": false,
+  "canonical_receipt_log_sha256": "fcbfd5344e0e80086182382dd899a79adc87f3541e2d1c318df122514ca63478",
+  "sanitization_note": "Local execution identity values were replaced with local_operator. Each canonical_receipt_sha256 hashes the original canonical JSONL line, not this sanitized index entry.",
+  "receipts": [
+    {
+      "run_id": "e712b239-3b8c-428c-8422-d4fb4a174c5a",
+      "command": "ingest",
+      "timestamp_utc": "2026-08-02T20:19:52.259067Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "prior_state": "DISCOVERED",
+      "requested_transition": "EVIDENCE_PRESERVED",
+      "resulting_state": "EVIDENCE_PRESERVED",
+      "outcome": "accepted",
+      "file_hashes": {
+        "evidence_sha256": "4be73b25abda8181e10f2ea0497e4bd2acf7c77ef24a009c20613b5a2b295e71"
+      },
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "c3f1709bd59bc9e0a1f4cfe019316f668fc22e3e7edcbf864bcd9e706256b5d0"
+    },
+    {
+      "run_id": "13a7492a-44cc-4279-ae1a-6b2c5ee3115b",
+      "command": "normalize",
+      "timestamp_utc": "2026-08-02T20:20:24.535009Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "prior_state": "EVIDENCE_PRESERVED",
+      "requested_transition": "NORMALIZED",
+      "resulting_state": "NORMALIZED",
+      "outcome": "accepted",
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "a393d0fff523f561cd5bcd35359c8a5297cc06357185562692e2465d3308efb3"
+    },
+    {
+      "run_id": "4261d333-4020-4c47-aaa4-41a7e92ff2c9",
+      "command": "deduplicate",
+      "timestamp_utc": "2026-08-02T20:20:26.095702Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "prior_state": "NORMALIZED",
+      "requested_transition": "DUPLICATE_CHECKED",
+      "resulting_state": "DUPLICATE_CHECKED",
+      "outcome": "accepted",
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "11ade6795bbb315028d7c096777d8a5acc0bbc34e12cef78cab4e6e101a5733c"
+    },
+    {
+      "run_id": "3e49056e-ab4a-4225-91e0-9cb7e903aac7",
+      "command": "qualify",
+      "timestamp_utc": "2026-08-02T20:20:27.244430Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "prior_state": "DUPLICATE_CHECKED",
+      "requested_transition": "QUALIFIED",
+      "resulting_state": "QUALIFIED",
+      "outcome": "accepted",
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "9586d8120789597e16b52e6902148c6b88f572a48fbfa110505ebaa0bb49e023"
+    },
+    {
+      "run_id": "a40a9859-40f7-47c0-a63e-6bf2efe9b337",
+      "command": "generate",
+      "timestamp_utc": "2026-08-02T20:20:29.170223Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "prior_state": "QUALIFIED",
+      "requested_transition": "PACKET_GENERATED",
+      "resulting_state": "PACKET_GENERATED",
+      "outcome": "accepted",
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "d7674dc52db838fba2a7981d3d37847e2aabed2204dfec8d6194faf48680c9a2"
+    },
+    {
+      "run_id": "1ee69551-7f81-479e-a462-0a5b91e2553a",
+      "command": "generate",
+      "timestamp_utc": "2026-08-02T20:20:29.240286Z",
+      "actor": "local_operator",
+      "actor_sanitized": true,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "packet_id": "pkt_64e811082405471ea8369a9bd4c4b430",
+      "prior_state": "PACKET_GENERATED",
+      "requested_transition": "AWAITING_APPROVAL",
+      "resulting_state": "AWAITING_APPROVAL",
+      "outcome": "accepted",
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "df804d4c5196011107384b65df1c4727110c9d171b1568a963a567ccab6bc5c2"
+    },
+    {
+      "run_id": "dde81012-fcde-44ac-859d-af19d8ec9957",
+      "command": "approve",
+      "timestamp_utc": "2026-08-02T20:20:30.566386Z",
+      "actor": "Brendon R. Coleman",
+      "actor_sanitized": false,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "packet_id": "pkt_64e811082405471ea8369a9bd4c4b430",
+      "prior_state": "AWAITING_APPROVAL",
+      "requested_transition": "APPROVED",
+      "resulting_state": "APPROVED",
+      "outcome": "accepted",
+      "file_hashes": {
+        "packet_manifest": "72d03c60193f9fa72b63f83ab068bd0c393583f3392bcf03a850a3746ee168d0"
+      },
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "737b9a5c597019da9c55b75d71453c1fe7a7eb53fb4b2e3864793e9f2d514d0f"
+    },
+    {
+      "run_id": "beb790aa-4b71-4635-bd42-eb47dc88c865",
+      "command": "release",
+      "timestamp_utc": "2026-08-02T20:20:32.199287Z",
+      "actor": "Brendon R. Coleman",
+      "actor_sanitized": false,
+      "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+      "packet_id": "pkt_64e811082405471ea8369a9bd4c4b430",
+      "prior_state": "APPROVED",
+      "requested_transition": "RELEASED",
+      "resulting_state": "RELEASED",
+      "outcome": "accepted",
+      "file_hashes": {
+        "packet_manifest": "72d03c60193f9fa72b63f83ab068bd0c393583f3392bcf03a850a3746ee168d0"
+      },
+      "application_version": "0.1.0",
+      "canonical_receipt_sha256": "b7c0b86f326308f45e4c419c150d576ca1305226c9be9da3abd95571f4589032"
+    }
+  ]
+}

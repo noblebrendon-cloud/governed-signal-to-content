@@ -1,0 +1,27 @@
+{
+  "approval_status": "AWAITING_APPROVAL",
+  "artifact_hashes": {
+    "01_linkedin_analysis.md": "792c486504cc1218e4db11080b946538e3b65d12371bceccdb0e8c5b060bcbe9",
+    "02_csg_facebook_post.md": "5b89ac3e752fe1d982334db1240f323d5d46b90484ac30d0da68ba6a795826f8",
+    "03_transient_vs_governed.mmd": "5ad1adafb58d401f4a40330f88907ee15c8065badc1a1c5e26af5e09b6c04de4",
+    "04_governed_operating_layers_essay.md": "c823bd70a25ab8a92f25346f272773039bd0cc2c78cb2a421e5fbc865bf8293a",
+    "05_repository_note.md": "544bc806037cfa36ef49a657f7a774c37785ded2d37b19fb29a5da13dc13b73c",
+    "sources.json": "1457e42735721ab4db26ae57e50f18270eaf003296c6570a5cf8f253ac2c83d6"
+  },
+  "candidate_id": "cand_3034defafdde4051afdecb4976cd0864",
+  "created_at_utc": "2026-08-02T20:20:29.073511Z",
+  "packet_id": "pkt_64e811082405471ea8369a9bd4c4b430",
+  "packet_manifest_hash": "72d03c60193f9fa72b63f83ab068bd0c393583f3392bcf03a850a3746ee168d0",
+  "required_artifacts": [
+    "01_linkedin_analysis.md",
+    "02_csg_facebook_post.md",
+    "03_transient_vs_governed.mmd",
+    "04_governed_operating_layers_essay.md",
+    "05_repository_note.md"
+  ],
+  "schema_version": "1.0",
+  "warnings": [
+    "01_linkedin_analysis.md: 218 words; target range is 250-500.",
+    "04_governed_operating_layers_essay.md: 650 words; target range is 800-1200."
+  ]
+}
