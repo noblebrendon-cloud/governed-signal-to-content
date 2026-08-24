@@ -18,6 +18,52 @@
     "outcome": {"enum": ["accepted", "rejected", "success", "failure"]},
     "reason": {"type": "string"},
     "file_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
-    "application_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"}
-  }
+    "application_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "authentication_status": {"type": ["string", "null"]},
+    "authenticated_principal_id": {"type": ["string", "null"]},
+    "authentication_scheme": {"type": ["string", "null"]},
+    "authentication_key_id": {"type": ["string", "null"]},
+    "authentication_verifier_fingerprint": {"type": ["string", "null"]},
+    "authentication_operation_id": {"type": ["string", "null"]},
+    "authentication_envelope_hash": {"type": ["string", "null"]},
+    "authentication_proof_hash": {"type": ["string", "null"]},
+    "authenticated_at_utc": {"type": ["string", "null"]},
+    "authorization_status": {"enum": ["allowed", "denied", "not_evaluated", null]},
+    "authorization_principal_id": {"type": ["string", "null"]},
+    "authorization_required_capability": {"type": ["string", "null"]},
+    "authorization_prior_state": {"type": ["string", "null"]},
+    "authorization_requested_state": {"type": ["string", "null"]},
+    "authorization_scope_version": {"enum": ["1.0", null]},
+    "authorization_brand_id": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"},
+    "authorization_channel_id": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"},
+    "authorization_destination_id": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"},
+    "authorization_matching_grant_id": {"type": ["string", "null"], "pattern": "^grant_[0-9a-f]{32}$"},
+    "authorization_reason_code": {"type": ["string", "null"]},
+    "chain_version": {"enum": ["1.0", null]},
+    "chain_origin": {"enum": ["native", null]},
+    "event_sequence": {"type": ["integer", "null"], "minimum": 1},
+    "previous_event_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "event_hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "chain_version": {"type": "null"},
+        "chain_origin": {"type": "null"},
+        "event_sequence": {"type": "null"},
+        "previous_event_hash": {"type": "null"},
+        "event_hash": {"type": "null"}
+      }
+    },
+    {
+      "required": ["chain_version", "chain_origin", "event_sequence", "previous_event_hash", "event_hash"],
+      "properties": {
+        "chain_version": {"const": "1.0"},
+        "chain_origin": {"const": "native"},
+        "event_sequence": {"type": "integer", "minimum": 1},
+        "previous_event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  ]
 }

@@ -25,8 +25,14 @@ The project does:
 - normalize candidates and suppress deterministic duplicates;
 - validate a classification that separates facts, inferences, similarities, and trends;
 - atomically generate a fixed five-artifact packet plus sources and a packet receipt;
-- require a named human approval before local release authorization;
-- persist workflow state in SQLite and append transition receipts to JSONL.
+- bind each new packet to one canonical `brand_id × channel_id × destination_id`
+  scope at generation time;
+- require an Ed25519-authenticated human principal for approval, rejection, and local
+  release authorization;
+- require an explicit active principal-by-capability-by-state-by-exact-scope grant for
+  each packet authority operation, with signed and chained policy administration;
+- persist workflow state and a locally tamper-evident transition-event chain in SQLite,
+  then append exact chain-bearing receipts to JSONL.
 
 The project does not:
 
@@ -49,12 +55,16 @@ flowchart LR
   D -->|unique| E[Structural qualification]
   D -->|duplicate| S[SUPPRESSED]
   E --> F[Five-artifact packet]
-  F --> G[Human approval]
+  F --> V[Ed25519 verification]
+  V --> A[Capability authorization]
+  A --> M[Transition mediator]
+  M --> G[Authenticated human approval]
   G -->|approved| H[Local release authorization]
   G -->|rejected| R[REJECTED]
   H --> I[Append-only execution receipt]
 
   P[Human or probabilistic proposal] -. classification and drafts .-> E
+  K[Ed25519 signed exact operation] --> V
   J[Deterministic application logic] --> C
   J --> D
   J --> E
@@ -102,7 +112,43 @@ Initialize runtime data outside the tracked repository:
 gs2c init --workspace E:\gs2c-workspace
 ```
 
+Generate signing material outside both the repository and governed workspace, then
+perform the one-time bootstrap of the empty principal registry. The private key remains
+at the operator-selected path; only its public verifier is stored in SQLite.
+
+```powershell
+gs2c principal-keygen `
+  --private-key E:\gs2c-credentials\reviewer-private.pem `
+  --public-key E:\gs2c-credentials\reviewer-public.pem
+gs2c principal-bootstrap --workspace E:\gs2c-workspace `
+  --principal-id reviewer-1 `
+  --public-key E:\gs2c-credentials\reviewer-public.pem
+```
+
 ## CLI workflow
+
+Before approve, reject, or release, use the signed capability-policy workflow to
+bootstrap `policy.manage_capabilities` and explicitly grant the needed operational
+capabilities. Migration grants nothing. For example, bootstrap policy administration:
+
+```powershell
+gs2c prepare-policy-operation --workspace E:\gs2c-workspace `
+  --operation bootstrap-capability-policy --principal-id reviewer-1 `
+  --reason "Initialize capability administration." `
+  --output E:\gs2c-operations\policy-bootstrap.json
+gs2c sign-operation --operation-file E:\gs2c-operations\policy-bootstrap.json `
+  --private-key E:\gs2c-credentials\reviewer-private.pem `
+  --output E:\gs2c-operations\policy-bootstrap-signed.json
+gs2c bootstrap-policy-admin --workspace E:\gs2c-workspace --actor "Human Reviewer" `
+  --authenticated-operation E:\gs2c-operations\policy-bootstrap-signed.json
+```
+
+Then use `prepare-policy-operation --operation grant-capability` followed by
+`sign-operation` and `grant-capability` for each of `packet.approve`, `packet.reject`,
+and `packet.release` that the principal should hold. Every operational grant must name
+the exact canonical `--brand-id`, `--channel-id`, and `--destination-id`; these are
+logical local identifiers, never credentials. See
+[local-first operation](docs/local-first-operation.md) for the complete workflow.
 
 ```powershell
 gs2c ingest --workspace E:\gs2c-workspace `
@@ -115,13 +161,35 @@ gs2c qualify --workspace E:\gs2c-workspace --candidate-id CANDIDATE_ID `
   --classification .\examples\classification.example.json
 gs2c generate --workspace E:\gs2c-workspace --candidate-id CANDIDATE_ID `
   --content-inputs .\examples\content_inputs.example.json
+gs2c packet-scope --workspace E:\gs2c-workspace --packet-id PACKET_ID
+
+gs2c prepare-operation --workspace E:\gs2c-workspace --operation approve `
+  --packet-id PACKET_ID --principal-id reviewer-1 `
+  --output E:\gs2c-operations\approve-envelope.json
+gs2c sign-operation --operation-file E:\gs2c-operations\approve-envelope.json `
+  --private-key E:\gs2c-credentials\reviewer-private.pem `
+  --output E:\gs2c-operations\approve-signed.json
 gs2c approve --workspace E:\gs2c-workspace --packet-id PACKET_ID `
-  --actor "Human Reviewer"
+  --actor "Human Reviewer" `
+  --authenticated-operation E:\gs2c-operations\approve-signed.json
+
+gs2c prepare-operation --workspace E:\gs2c-workspace --operation release `
+  --packet-id PACKET_ID --principal-id reviewer-1 `
+  --output E:\gs2c-operations\release-envelope.json
+gs2c sign-operation --operation-file E:\gs2c-operations\release-envelope.json `
+  --private-key E:\gs2c-credentials\reviewer-private.pem `
+  --output E:\gs2c-operations\release-signed.json
 gs2c release --workspace E:\gs2c-workspace --packet-id PACKET_ID `
-  --actor "Human Release Authorizer"
+  --actor "Human Release Authorizer" `
+  --authenticated-operation E:\gs2c-operations\release-signed.json
 gs2c status --workspace E:\gs2c-workspace
 gs2c receipt --workspace E:\gs2c-workspace --run-id RUN_ID
+gs2c verify-integrity --workspace E:\gs2c-workspace
 ```
+
+`verify-integrity` reports canonical-chain, canonical-policy, and JSONL projection
+validity separately from projection completeness. The SHA-256 chain detects partial
+local tampering; it is not a digital signature or an externally anchored history.
 
 Use `--source-file PATH` with `ingest` to copy and verify local evidence bytes. Without it, the evidence record has `content_preserved: false`.
 
@@ -160,11 +228,59 @@ workspace/
     └── watch_state.sqlite
 ```
 
-Preserved files are written to a new path, their original filenames and byte sizes are recorded, and their bytes are verified by SHA-256. Structured manifests use canonical JSON before hashing. Every accepted or rejected transition attempt receives a UUID run ID and an append-only JSONL record. Prior receipt lines are never rewritten.
+Preserved files are written to a new path, their original filenames and byte sizes are
+recorded, and their bytes are verified by SHA-256. Structured manifests use canonical
+JSON before hashing. Every accepted or rejected transition attempt receives a UUID
+event/run ID. SQLite is the canonical authority for new transition events; the
+append-only JSONL record is an outward projection of the exact stored event payload.
+Prior receipt lines are never rewritten. Interrupted projections can be recovered with
+`gs2c reconcile-receipts`.
 
 ## Approval boundary
 
-Packet generation stops at `AWAITING_APPROVAL`. `approve` binds an actor, time, prior state, and exact packet manifest hash to an approval record. `release` accepts only an `APPROVED` packet and creates local release authorization. It performs no external publication.
+Packet generation stops at `AWAITING_APPROVAL`. `approve`, `reject`, and `release`
+require a signed, short-lived, single-use exact-operation envelope from the bootstrapped
+trusted principal and an active exact grant: `packet.approve`, `packet.reject`, or
+`packet.release` for both the canonical transition pair and the packet's exact brand,
+channel, and destination. The `--actor` value remains compatibility/display text only and is
+recorded separately as `asserted_actor`; it is never identity proof. Approval and release
+also recompute the governed artifact hashes required by Slice 1.
+
+The CLI is an adapter into one `TransitionMediator`. Successful verification creates an
+immutable `AuthenticatedTransitionRequest`; state, target, decision, reason, manifest,
+and approval values used for adjudication then come from that request. A narrow
+`CanonicalTransitionService` owns the supported accepted-write path. Lower-level public
+state-machine/database helpers refuse authority-sensitive state pairs.
+
+SQLite stores the public Ed25519 verifier and canonical proof-consumption ledger. The
+private key is never stored in SQLite, packets, approvals, events, receipts, or this
+repository. Accepted transition events identify the authenticated principal, verifier,
+scheme, operation ID, envelope hash, and proof hash. Historical events retain nullable
+authentication fields and are not retroactively authenticated.
+
+Authentication proves who signed the exact local operation; canonical capability policy
+independently determines whether that principal may perform the state transition.
+Authorization decisions, grants, and revocations are committed into the locally
+tamper-evident event/receipt chain. Packet generation commits canonical scope into
+`sources.json`, the packet manifest, the packet receipt, and SQLite. Signed packet
+operations derive that scope from SQLite; approval/release requires equality among the
+request, packet, approval, and authorizing grant. There are no wildcard, null-means-any,
+prefix, or inherited scopes.
+
+Schema 6 adds a separate privileged external-effect boundary. A fresh
+`effect.manage_bindings` grant is required to register an immutable logical destination
+binding or an executor public identity; this capability is never granted by policy
+bootstrap. A `RELEASED` packet can then produce one canonical effect request whose hash
+binds its release event, approval, release grant, exact scope, destination binding,
+artifact hashes, adapter, target reference, credential reference, and stable idempotency
+key. The main process claims the request and later accepts only an Ed25519-signed result
+from a registered executor.
+
+The bundled executor supports only the offline `test.capture` adapter. Credential values
+are resolved inside the executor from its environment and never enter command arguments,
+SQLite, events, receipts, or capture files. This is provider-neutral test infrastructure,
+not a live publisher; it claims neither remote exactly-once execution nor protection from
+complete host compromise.
 
 ## Repository structure
 
@@ -185,11 +301,15 @@ tests/     state, identity, packet, approval, receipt, and schema tests
 - URL-only ingestion records a reference and does not download or archive content.
 - Duplicate matching is intentionally narrow: SHA-256 source identity, normalized URL, and selected development identifiers.
 - SQLite and JSONL are designed for a local operator, not concurrent distributed writers.
-- `RELEASED` is local authorization only; downstream publication is outside the implementation.
+- The trusted-principal bootstrap is one-time for an empty registry; rotation, revocation,
+  additional-principal administration, and protection after host/private-key compromise
+  are not implemented.
+- `RELEASED` is local authorization only. The Slice 7 capture executor exercises the
+  effect boundary without network access or live publication.
 
 ## Roadmap
 
-- signed or stronger tamper-evident receipt chains;
+- optional signing or external anchoring for the local tamper-evident chain;
 - additional local discovery adapters;
 - richer development-identifier extraction;
 - configurable qualification policies with the same deterministic authority boundary;

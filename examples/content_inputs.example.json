@@ -10,5 +10,11 @@
     "https://docs.cloud.google.com/agent-registry/data-model",
     "https://docs.cloud.google.com/agent-registry/register-agents",
     "https://docs.cloud.google.com/agent-registry/concepts"
-  ]
+  ],
+  "scope": {
+    "scope_version": "1.0",
+    "brand_id": "example-brand",
+    "channel_id": "example-channel",
+    "destination_id": "example-destination"
+  }
 }

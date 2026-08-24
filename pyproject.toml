@@ -13,6 +13,7 @@ authors = [
   { name = "Brendon R. Coleman" },
 ]
 dependencies = [
+  "cryptography>=45,<47",
   "jsonschema>=4.22,<5",
   "pydantic>=2.7,<3",
   "PyYAML>=6,<7",
@@ -26,6 +27,7 @@ dev = [
 
 [project.scripts]
 gs2c = "governed_signal_to_content.cli:app"
+gs2c-effect-executor = "governed_signal_to_content.effect_executor:app"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/governed_signal_to_content"]

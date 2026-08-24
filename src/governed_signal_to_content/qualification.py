@@ -34,6 +34,7 @@ def qualify_candidate(
     if prior is not WorkflowState.DUPLICATE_CHECKED:
         return (
             record_rejected_transition(
+                database_path=paths.database,
                 receipt_log=paths.receipt_log,
                 command="qualify",
                 actor=execution_identity(),
@@ -59,6 +60,7 @@ def qualify_candidate(
             + classification.qualification_reason
         )
         receipt = record_rejected_transition(
+            database_path=paths.database,
             receipt_log=paths.receipt_log,
             command="qualify",
             actor=execution_identity(),
